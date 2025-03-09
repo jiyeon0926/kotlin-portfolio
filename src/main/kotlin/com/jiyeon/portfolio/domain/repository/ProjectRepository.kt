@@ -1,6 +1,6 @@
-package com.jiyeon.portfolio.domain.constant.repository
+package com.jiyeon.portfolio.domain.repository
 
-import com.jiyeon.portfolio.domain.constant.entity.Project
+import com.jiyeon.portfolio.domain.entity.Project
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface ProjectRepository : JpaRepository<Project, Long> {

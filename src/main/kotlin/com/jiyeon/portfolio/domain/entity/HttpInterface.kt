@@ -1,4 +1,4 @@
-package com.jiyeon.portfolio.domain.constant.entity
+package com.jiyeon.portfolio.domain.entity
 
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 
 @Entity
-class Experience : BaseEntity() {
+class HttpInterface : BaseEntity() {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
