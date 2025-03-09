@@ -1,0 +1,82 @@
+폴더 PATH의 목록입니다.
+볼륨 일련 번호는 48AF-5200입니다.
+C:.
+├─.gradle
+│  ├─8.12.1
+│  │  ├─checksums
+│  │  ├─executionHistory
+│  │  ├─expanded
+│  │  ├─fileChanges
+│  │  ├─fileHashes
+│  │  └─vcsMetadata
+│  ├─buildOutputCleanup
+│  ├─kotlin
+│  │  ├─errors
+│  │  └─sessions
+│  └─vcs-1
+├─.idea
+├─build
+│  ├─classes
+│  │  └─kotlin
+│  │      ├─main
+│  │      │  ├─com
+│  │      │  │  └─jiyeon
+│  │      │  │      └─portfolio
+│  │      │  └─META-INF
+│  │      └─test
+│  │          ├─com
+│  │          │  └─jiyeon
+│  │          │      └─portfolio
+│  │          └─META-INF
+│  ├─kotlin
+│  │  ├─compileKotlin
+│  │  │  ├─cacheable
+│  │  │  │  └─caches-jvm
+│  │  │  │      ├─inputs
+│  │  │  │      ├─jvm
+│  │  │  │      │  └─kotlin
+│  │  │  │      └─lookups
+│  │  │  ├─classpath-snapshot
+│  │  │  └─local-state
+│  │  └─compileTestKotlin
+│  │      ├─cacheable
+│  │      │  └─caches-jvm
+│  │      │      ├─inputs
+│  │      │      ├─jvm
+│  │      │      │  └─kotlin
+│  │      │      └─lookups
+│  │      ├─classpath-snapshot
+│  │      └─local-state
+│  └─resources
+│      └─main
+│          ├─static
+│          └─templates
+├─gradle
+│  └─wrapper
+├─out
+│  └─production
+│      ├─classes
+│      │  ├─com
+│      │  │  └─jiyeon
+│      │  │      └─portfolio
+│      │  └─META-INF
+│      └─resources
+└─src
+    ├─main
+    │  ├─generated
+    │  ├─kotlin
+    │  │  └─com
+    │  │      └─jiyeon
+    │  │          └─portfolio
+    │  │              └─domain
+    │  │                  ├─constant
+    │  │                  ├─entity
+    │  │                  └─repository
+    │  └─resources
+    │      ├─static
+    │      └─templates
+    └─test
+        └─kotlin
+            └─com
+                └─jiyeon
+                    └─portfolio
