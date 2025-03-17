@@ -84,4 +84,10 @@ class ExperienceRepositoryTest(
         }
         logger.info { "findAllByIsActive 테스트 종료" }
     }
+
+    @Test
+    fun testFindById() {
+        val experience = experienceRepository.findById(1).get()
+        logger.info { experience.details }
+    }
 }
