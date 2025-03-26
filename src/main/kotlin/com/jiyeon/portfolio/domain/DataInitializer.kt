@@ -48,8 +48,6 @@ class DataInitializer(
         // Link
         val links = mutableListOf<Link>(
             Link(name = "Github", content = "https://github.com/jiyeon0926", isActive = true),
-            Link(name = "Study Blog", content = "https://blog.naver.com/yeondata", isActive = true),
-            Link(name = "Trouble Shooting", content = "https://velog.io/@yeoni9094/posts", isActive = true),
         )
         linkRepository.saveAll(links)
 
@@ -66,7 +64,8 @@ class DataInitializer(
         experience1.addDetails(
             mutableListOf(
                 ExperienceDetail(content = "Spring 프레임워크 기반 웹 애플리케이션 개발 과정 학습", isActive = true),
-                ExperienceDetail(content = "팀 프로젝트 5회 진행", isActive = true)
+                ExperienceDetail(content = "팀 프로젝트 5회 진행", isActive = true),
+                ExperienceDetail(content = "총 5회의 팀 프로젝트에서 리더 3번, 발표 3번 경험 보유", isActive = true)
             )
         )
 
@@ -75,8 +74,8 @@ class DataInitializer(
             description = "Spring Boot with Kotlin",
             startYear = 2025,
             startMonth = 3,
-            endYear = null,
-            endMonth = null,
+            endYear = 2025,
+            endMonth = 4,
             isActive = true,
         )
         experience2.addDetails(
@@ -91,10 +90,11 @@ class DataInitializer(
         val java = Skill(name = "Java", type = SkillType.LANGUAGE.name, isActive = true)
         val kotlin = Skill(name = "Kotlin", type = SkillType.LANGUAGE.name, isActive = true)
         val spring = Skill(name = "Spring", type = SkillType.FRAMEWORK.name, isActive = true)
+        val springSecurity = Skill(name = "SpringSecurity", type = SkillType.FRAMEWORK.name, isActive = true)
         val mysql = Skill(name = "MySQL", type = SkillType.DATABASE.name, isActive = true)
         val mssql = Skill(name = "MSSQL", type = SkillType.DATABASE.name, isActive = true)
         val redis = Skill(name = "Redis", type = SkillType.DATABASE.name, isActive = true)
-        skillRepository.saveAll(mutableListOf(java, kotlin, spring, mysql, mssql, redis))
+        skillRepository.saveAll(mutableListOf(java, kotlin, spring, springSecurity, mysql, mssql, redis))
 
         // Project
         val project1 = Project(
@@ -108,6 +108,9 @@ class DataInitializer(
         )
         project1.addDetails(
             mutableListOf(
+                ProjectDetail(content = "리더로서 프로젝트 일정을 관리하고 주도하여 진행", url = null, isActive = true),
+                ProjectDetail(content = "발표를 맡아 프로젝트의 진행 과정과 결과물을 시각 자료와 수치를 활용하여 효과적으로 전달", url = null, isActive = true),
+                ProjectDetail(content = "프로젝트의 주요 내용을 GitHub README에 작성하였고, 기능별 API 명세서와 부하 테스트 및 성능 개선 내용을 GitHub WiKi 문서로 작성", url = null, isActive = true),
                 ProjectDetail(content = "Kakao MAP API를 활용한 장소 검색 기능 구현", url = null, isActive = true),
                 ProjectDetail(content = "Redis 분산락을 적용해 예약 동시성 이슈 해결", url = null, isActive = true),
                 ProjectDetail(content = "Kakao Pay API를 활용한 결제 기능 구현", url = null, isActive = true),
@@ -128,6 +131,7 @@ class DataInitializer(
             mutableListOf(
                 ProjectSkill(project = project1, skill = java),
                 ProjectSkill(project = project1, skill = spring),
+                ProjectSkill(project = project1, skill = springSecurity),
                 ProjectSkill(project = project1, skill = mysql),
                 ProjectSkill(project = project1, skill = redis)
             )
@@ -138,8 +142,8 @@ class DataInitializer(
             description = "학생들이 전공 및 교양 과목을 수강 신청할 수 있는 서비스",
             startYear = 2025,
             startMonth = 3,
-            endYear = null,
-            endMonth = null,
+            endYear = 2025,
+            endMonth = 4,
             isActive = true
         )
         project2.addDetails(
@@ -156,6 +160,7 @@ class DataInitializer(
             mutableListOf(
                 ProjectSkill(project = project2, skill = kotlin),
                 ProjectSkill(project = project2, skill = spring),
+                ProjectSkill(project = project2, skill = springSecurity),
                 ProjectSkill(project = project2, skill = mysql)
             )
         )
