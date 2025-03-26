@@ -39,6 +39,6 @@ class PresentationViewController(private val presentationService: PresentationSe
         val projects = presentationService.getProjects()
         model.addAttribute("projects", projects)
 
-        return "presentation/proejcts"
+        return "presentation/projects"
     }
 }
