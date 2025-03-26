@@ -53,8 +53,8 @@ class DataInitializer(
 
         // Experience
         val experience1 = Experience(
-            title = "내일배움캠프 스프링 백엔드",
-            description = "Spring 7기",
+            title = "스프링 백엔드 부트캠프",
+            description = "내일배움캠프 Spring 7기",
             startYear = 2024,
             startMonth = 9,
             endYear = 2025,
