@@ -197,3 +197,11 @@ ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom", "-jar", "/portfoli
 ![image](https://github.com/user-attachments/assets/87f65a8c-ae96-4367-bd7b-00c21cd7ed61)
 ![image](https://github.com/user-attachments/assets/e8eac88b-c4a6-4877-ab59-d2035ac1b6ec)
 ![image](https://github.com/user-attachments/assets/8caaf2a2-d4d3-4aa3-9c92-a9a9b8398b84)
+
+이미지 태그 지정 후, Dockerfile을 다시 build 한다
+오류가 생길 경우, build.gradle 파일의 아래 코드를 주석 처리하면 해결된다
+```
+tasks.withType<Test> {
+	useJUnitPlatform()
+}
+```
