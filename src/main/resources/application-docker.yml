@@ -11,6 +11,6 @@ spring:
         default_batch_fetch_size: 10
   datasource:
     username: root
-    url: jdbc:mysql://mysql:3306/kotlin_portfolio
+    url: jdbc:mysql://mysql:3307/kotlin_portfolio
     password: ENC(5Q0kblP/F+yDvz11YgjH+byOIIpu/AuA)
     driver-class-name: com.mysql.cj.jdbc.Driver
