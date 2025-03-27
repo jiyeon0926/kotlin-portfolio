@@ -1,4 +1,4 @@
-# 배포 방법 정리
+# 배포 방법 순서 정리
 
 ## gitignore
 docker-compose.yml 파일 추가
@@ -171,3 +171,29 @@ create table http_interface(
   , foreign key(skill_id) references skill(skill_id)
  );
 ```
+
+## Dockerfile
+먼저, jar 파일이 있는지 확인하고 Dockerfile을 실행한다
+```
+dir build\libs\
+```
+```
+FROM openjdk:17
+
+LABEL maintainer="yeonji20250126@gmail.com"
+
+VOLUME /tmp
+
+EXPOSE 8080
+
+ARG JAR_FILE=build/libs/portfolio-0.0.1-SNAPSHOT.jar
+
+ADD ${JAR_FILE} portfolio-jiyeon.jar
+
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom", "-jar", "/portfolio-jiyeon.jar"]
+```
+
+![image](https://github.com/user-attachments/assets/01dd2654-e11f-4373-88a9-375e952b4f1f)
+![image](https://github.com/user-attachments/assets/87f65a8c-ae96-4367-bd7b-00c21cd7ed61)
+![image](https://github.com/user-attachments/assets/e8eac88b-c4a6-4877-ab59-d2035ac1b6ec)
+![image](https://github.com/user-attachments/assets/8caaf2a2-d4d3-4aa3-9c92-a9a9b8398b84)
