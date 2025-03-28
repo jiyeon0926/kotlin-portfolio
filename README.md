@@ -205,3 +205,20 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 ```
+
+## docker-compose.yml 내용 추가
+```
+...
+  portfolio-jiyeon:
+    image: jiyeon0126/portfolio-jiyeon
+    container_name: portfolio-jiyeon
+    ports:
+      - "8080:8080"
+    environment:
+      - "SPRING_PROFILES_ACTIVE=docker"
+      - "jasypt.encryptor.key=q1w2e3"
+    volumes:
+      - /var/lib/docker/volumes/portfolio-jiyeon/_data:/tmp
+    depends_on:
+      - mysql
+```
