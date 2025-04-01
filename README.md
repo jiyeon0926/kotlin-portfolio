@@ -300,9 +300,19 @@ UgvtkWlqktrNr8A82x1FxA==
 qaz123
 ```
 ```
+...
+  datasource:
+    username: root
+    url: jdbc:mysql://mysql:3307/portfolio
+    password: ENC(UgvtkWlqktrNr8A82x1FxA==)
+    driver-class-name: com.mysql.cj.jdbc.Driver
+```
+
+- Dockerfile build 후 docker-compose.yml 실행
+```
 docker-compose up -d
 
 [+] Running 2/2
  ✔ Container mysql             Running                                                            0.0s 
- ✔ Container portfolio-jiyeon  Started    
+ ✔ Container portfolio-jiyeon  Started                                                           16.5s  
 ```
