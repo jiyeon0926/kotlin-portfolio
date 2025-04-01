@@ -1,4 +1,4 @@
-# Docker
+# 🐳 Docker
 
 ## .gitignore
 ```
@@ -6,7 +6,7 @@ docker-compose.yml
 ```
 
 ## docker-compose.yml - 1
-port 3306 사용 중이어서 3307 사용
+- port 3306 사용 중이어서 3307 사용
 ```
 version: '2'
 
@@ -193,4 +193,116 @@ create table http_interface(
  );
 ```
 
-## 
+## Dockerfile
+```
+FROM openjdk:17
+
+LABEL maintainer="yeonji20250126@gmail.com"
+
+VOLUME /tmp
+
+EXPOSE 8080
+
+ARG JAR_FILE=build/libs/portfolio-0.0.1-SNAPSHOT.jar
+
+ADD ${JAR_FILE} portfolio-jiyeon.jar
+
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom", "-jar", "/portfolio-jiyeon.jar"]
+```
+
+- 주석 처리하니 build 성공
+```
+//tasks.withType<Test> {
+//	useJUnitPlatform()
+//}
+```
+
+## docker-compose.yml - 2
+```
+...
+  portfolio-jiyeon:
+    image: jiyeon0126/portfolio-jiyeon
+    container_name: portfolio-jiyeon
+    ports:
+        - "8080:8080"
+    environment:
+      - "SPRING_PROFILES_ACTIVE=docker"
+      - "jasypt.encryptor.key=q1w2e3"
+    volumes:
+      - /var/lib/docker/volumes/portfolio-jiyeon/_data:/tmp
+    depends_on:
+      - mysql
+```
+
+## JasyptConfiguration
+```
+implementation("com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5")
+```
+```
+@Configuration
+class JasyptConfiguration {
+
+    @Bean("jasyptStringEncryptor")
+    fun stringEncryptor(): StringEncryptor {
+        val encryptor = PooledPBEStringEncryptor()
+        val config = SimpleStringPBEConfig()
+        
+        config.password = System.getenv("jasypt.encryptor.key")
+        config.algorithm = "PBEWithMD5AndDES"
+        config.setKeyObtentionIterations("1000")
+        config.setPoolSize("1")
+        config.providerName = "SunJCE"
+        config.setSaltGeneratorClassName("org.jasypt.salt.RandomSaltGenerator")
+        config.setIvGeneratorClassName("org.jasypt.iv.NoIvGenerator")
+        config.stringOutputType = "base64"
+        
+        encryptor.setConfig(config)
+        
+        return encryptor
+    }
+}
+```
+```
+@SpringBootTest
+class PortfolioApplicationTests {
+
+	@Test
+	fun contextLoads() {
+	}
+
+	@Test
+	fun jasypt() {
+		val plainText = "qaz123"
+		val encryptor = PooledPBEStringEncryptor()
+		val config = SimpleStringPBEConfig()
+
+		config.password = "q1w2e3"
+		config.algorithm = "PBEWithMD5AndDES"
+		config.setKeyObtentionIterations("1000")
+		config.setPoolSize("1")
+		config.providerName = "SunJCE"
+		config.setSaltGeneratorClassName("org.jasypt.salt.RandomSaltGenerator")
+		config.setIvGeneratorClassName("org.jasypt.iv.NoIvGenerator")
+		config.stringOutputType = "base64"
+
+		encryptor.setConfig(config)
+
+		val encryptedText: String = encryptor.encrypt(plainText)
+		val decryptedText: String = encryptor.decrypt(encryptedText)
+		
+		println(encryptedText)
+		println(decryptedText)
+	}
+}
+```
+```
+UgvtkWlqktrNr8A82x1FxA==
+qaz123
+```
+```
+docker-compose up -d
+
+[+] Running 2/2
+ ✔ Container mysql             Running                                                            0.0s 
+ ✔ Container portfolio-jiyeon  Started    
+```
