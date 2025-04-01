@@ -75,7 +75,7 @@ use portfolio;
  values ('admin1', '$2a$10$BWi6SLqZRJyVvJyufjTtHeYXNNhpNY9rxaVl9fBOE.1t3QF98B.cO', now(), now());
 
 create table http_interface(
- http_interface_id int not null auto_increment
+ id int not null auto_increment
  , cookies varchar(255)
  , referer varchar(255)
  , local_addr varchar(255)
@@ -89,7 +89,7 @@ create table http_interface(
  );
 
  create table achievement(
-  achievement_id int not null auto_increment
+  id int not null auto_increment
  , created_date_time datetime
 , title varchar(255)
  , description varchar(255)
@@ -101,7 +101,7 @@ create table http_interface(
  );
 
  create table introduction(
-  introduction_id int not null auto_increment
+  id int not null auto_increment
  , content varchar(255)
  , is_active bit
  , created_date_time datetime
@@ -110,7 +110,7 @@ create table http_interface(
  );
 
  create table link(
-  link_id int not null auto_increment
+  id int not null auto_increment
  , name varchar(255)
  , content varchar(255)
  , is_active bit
@@ -120,7 +120,7 @@ create table http_interface(
  );
 
  create table skill(
-  skill_id int not null auto_increment
+  id int not null auto_increment
  , name varchar(255)
  , skill_type varchar(255)
  , is_active bit
@@ -130,7 +130,7 @@ create table http_interface(
  );
 
  create table experience(
-  experience_id int not null auto_increment
+  id int not null auto_increment
  , title varchar(255)
  , description varchar(255)
  , start_year smallint
@@ -144,7 +144,7 @@ create table http_interface(
  );
 
  create table experience_detail(
-  experience_detail_id int not null auto_increment
+  id int not null auto_increment
  , experience_id int
  , content varchar(255)
  , is_active bit
@@ -155,7 +155,7 @@ create table http_interface(
  );
 
  create table project(
-  project_id int not null auto_increment
+  id int not null auto_increment
  , name varchar(255)
  , description varchar(255)
  , start_year smallint
@@ -169,7 +169,7 @@ create table http_interface(
  );
 
  create table project_detail(
-  project_detail_id int not null auto_increment
+  id int not null auto_increment
  , project_id int
  , content varchar(255)
  , url varchar(255)
@@ -181,7 +181,7 @@ create table http_interface(
  );
 
  create table project_skill(
-  project_skill_id int not null auto_increment
+  id int not null auto_increment
  , project_id int
  , skill_id int
  , created_date_time datetime
