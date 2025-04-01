@@ -90,11 +90,10 @@ class DataInitializer(
         val java = Skill(name = "Java", type = SkillType.LANGUAGE.name, isActive = true)
         val kotlin = Skill(name = "Kotlin", type = SkillType.LANGUAGE.name, isActive = true)
         val spring = Skill(name = "Spring", type = SkillType.FRAMEWORK.name, isActive = true)
-        val springSecurity = Skill(name = "SpringSecurity", type = SkillType.FRAMEWORK.name, isActive = true)
         val mysql = Skill(name = "MySQL", type = SkillType.DATABASE.name, isActive = true)
         val mssql = Skill(name = "MSSQL", type = SkillType.DATABASE.name, isActive = true)
         val redis = Skill(name = "Redis", type = SkillType.DATABASE.name, isActive = true)
-        skillRepository.saveAll(mutableListOf(java, kotlin, spring, springSecurity, mysql, mssql, redis))
+        skillRepository.saveAll(mutableListOf(java, kotlin, spring, mysql, mssql, redis))
 
         // Project
         val project1 = Project(
@@ -131,7 +130,6 @@ class DataInitializer(
             mutableListOf(
                 ProjectSkill(project = project1, skill = java),
                 ProjectSkill(project = project1, skill = spring),
-                ProjectSkill(project = project1, skill = springSecurity),
                 ProjectSkill(project = project1, skill = mysql),
                 ProjectSkill(project = project1, skill = redis)
             )
@@ -160,7 +158,6 @@ class DataInitializer(
             mutableListOf(
                 ProjectSkill(project = project2, skill = kotlin),
                 ProjectSkill(project = project2, skill = spring),
-                ProjectSkill(project = project2, skill = springSecurity),
                 ProjectSkill(project = project2, skill = mysql)
             )
         )
