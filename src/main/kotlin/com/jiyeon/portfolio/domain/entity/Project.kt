@@ -47,7 +47,7 @@ class Project(
         return "${endYear}.${endMonth}"
     }
 
-    fun update(title: String, description: String,
+    fun update(name: String, description: String,
                startYear: Int, startMonth: Int, endYear: Int?, endMonth: Int?,
                isActive: Boolean) {
         this.name = name
