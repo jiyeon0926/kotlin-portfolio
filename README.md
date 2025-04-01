@@ -6,7 +6,6 @@ docker-compose.yml
 ```
 
 ## docker-compose.yml - 1
-- port 3306 사용 중이어서 3307 사용
 ```
 version: '2'
 
@@ -15,7 +14,7 @@ services:
     image: mysql
     container_name: mysql
     ports:
-      - "3307:3306"
+      - "3306:3306"
     environment:
       - "MYSQL_ROOT_PASSWORD=qaz123"
       - "TZ=Asia/Seoul"
@@ -35,7 +34,7 @@ docker-compose up -d
 ```
 
 ## DBeaver
-- port : 3307
+- port : 3306
 - password : qaz123
 - host : localhost
 - username : root
@@ -54,7 +53,7 @@ spring:
         default_batch_fetch_size: 10
   datasource:
     username: root
-    url: jdbc:mysql://mysql:3307/portfolio
+    url: jdbc:mysql://mysql:3306/portfolio
     password: ENC(5Q0kblP/F+yDvz11YgjH+byOIIpu/AuA)
     driver-class-name: com.mysql.cj.jdbc.Driver
 ```
@@ -303,7 +302,7 @@ qaz123
 ...
   datasource:
     username: root
-    url: jdbc:mysql://mysql:3307/portfolio
+    url: jdbc:mysql://mysql:3306/portfolio
     password: ENC(UgvtkWlqktrNr8A82x1FxA==)
     driver-class-name: com.mysql.cj.jdbc.Driver
 ```
@@ -314,5 +313,5 @@ docker-compose up -d
 
 [+] Running 2/2
  ✔ Container mysql             Running                                                            0.0s 
- ✔ Container portfolio-jiyeon  Started                                                           16.5s  
+ ✔ Container portfolio-jiyeon  Started                                                            9.7s 
 ```
