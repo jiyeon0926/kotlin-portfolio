@@ -1,15 +1,12 @@
-# 배포 방법 순서 정리
+# Docker
 
-## gitignore
-docker-compose.yml 파일 추가
+## .gitignore
 ```
 docker-compose.yml
 ```
 
-## docker-compose.yml
-- docker-compose.yml 파일 생성
-- 3306 포트 번호는 이미 사용 중이어서 3307로 설정
-- services 실행
+## docker-compose.yml - 1
+port 3306 사용 중이어서 3307 사용
 ```
 version: '2'
 
@@ -20,7 +17,7 @@ services:
     ports:
       - "3307:3306"
     environment:
-      - "MYSQL_ROOT_PASSWORD=비밀번호 설정"
+      - "MYSQL_ROOT_PASSWORD=qaz123"
       - "TZ=Asia/Seoul"
       - "LC_ALL=C.UTF-8"
     command:
@@ -29,18 +26,42 @@ services:
       - /var/lib/docker/volumes/mysql/_data:/var/lib/mysql
 ```
 ```
-> docker ps
-CONTAINER ID   IMAGE     COMMAND                   CREATED         STATUS         PORTS                               NAMES
-[CONTAINER ID]   mysql     "docker-entrypoint.s…"   4 seconds ago   Up 3 seconds   33060/tcp, 0.0.0.0:3307->3306/tcp   mysql
+docker-compose up -d
+
+
+[+] Running 2/2
+ ✔ Network portfolio_default  Created                                                             0.3s 
+ ✔ Container mysql            Started   
 ```
 
 ## DBeaver
-- localhost
-- 3307
-- 설정한 비밀번호
-- 데이터베이스 연결 후, 테이블 생성
+- port : 3307
+- password : qaz123
+- host : localhost
+- username : root
+- allowPublicKeyRetrieval : true
 ```
-use kotlin_portfolio;
+spring:
+  jpa:
+    database: mysql
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: false
+        default_batch_fetch_size: 10
+  datasource:
+    username: root
+    url: jdbc:mysql://mysql:3307/portfolio
+    password: ENC(5Q0kblP/F+yDvz11YgjH+byOIIpu/AuA)
+    driver-class-name: com.mysql.cj.jdbc.Driver
+```
+```
+create database portfolio;
+
+use portfolio;
 
  create table account(
  account_id int not null auto_increment
@@ -172,96 +193,4 @@ create table http_interface(
  );
 ```
 
-## Dockerfile
-먼저, jar 파일이 있는지 확인하고 Dockerfile을 실행한다
-```
-dir build\libs\
-```
-```
-FROM openjdk:17
-
-LABEL maintainer="yeonji20250126@gmail.com"
-
-VOLUME /tmp
-
-EXPOSE 8080
-
-ARG JAR_FILE=build/libs/portfolio-0.0.1-SNAPSHOT.jar
-
-ADD ${JAR_FILE} portfolio-jiyeon.jar
-
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom", "-jar", "/portfolio-jiyeon.jar"]
-```
-
-![image](https://github.com/user-attachments/assets/01dd2654-e11f-4373-88a9-375e952b4f1f)
-![image](https://github.com/user-attachments/assets/87f65a8c-ae96-4367-bd7b-00c21cd7ed61)
-![image](https://github.com/user-attachments/assets/e8eac88b-c4a6-4877-ab59-d2035ac1b6ec)
-![image](https://github.com/user-attachments/assets/8caaf2a2-d4d3-4aa3-9c92-a9a9b8398b84)
-
-이미지 태그 지정 후, Dockerfile을 다시 build 한다
-오류가 생길 경우, build.gradle 파일의 아래 코드를 주석 처리하면 해결된다
-```
-tasks.withType<Test> {
-	useJUnitPlatform()
-}
-```
-
-## docker-compose.yml 내용 추가
-```
-...
-  portfolio-jiyeon:
-    image: jiyeon0126/portfolio-jiyeon
-    container_name: portfolio-jiyeon
-    ports:
-      - "8080:8080"
-    environment:
-      - "SPRING_PROFILES_ACTIVE=docker"
-      - "jasypt.encryptor.key=q1w2e3"
-    volumes:
-      - /var/lib/docker/volumes/portfolio-jiyeon/_data:/tmp
-    depends_on:
-      - mysql
-```
-
-## jasypt
-- jasypt 의존성을 추가
-- asyptConfiguration 클래스를 생성
-- 테스트 코드를 작성해 암호화된 문자를 application-docker.yml 파일의 password에 추가
-```
-implementation("com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5")
-```
-```
-@SpringBootTest
-class PortfolioApplicationTests {
-...
-        @Test
-	fun jasypt() {
-		val plainText = "dkssudgktpdy"
-		val encryptor = PooledPBEStringEncryptor()
-		val config = SimpleStringPBEConfig()
-
-		config.password = "qwer1234"
-		config.algorithm = "PBEWithMD5AndDES"
-		config.setKeyObtentionIterations("1000")
-		config.setPoolSize("1")
-		config.providerName = "SunJCE"
-		config.setSaltGeneratorClassName("org.jasypt.salt.RandomSaltGenerator")
-		config.setIvGeneratorClassName("org.jasypt.iv.NoIvGenerator")
-		config.stringOutputType = "base64"
-
-		encryptor.setConfig(config)
-
-		val encryptedText: String = encryptor.encrypt(plainText)
-		val decryptedText: String = encryptor.decrypt(encryptedText)
-		println(encryptedText)
-		println(decryptedText)
-	}
-}
-```
-
-## docker-compose.yml 재실행
-```
-[+] Running 2/2
- ✔ Container mysql             Running                                                            0.0s 
- ✔ Container portfolio-jiyeon  Started  
-```
+## 
