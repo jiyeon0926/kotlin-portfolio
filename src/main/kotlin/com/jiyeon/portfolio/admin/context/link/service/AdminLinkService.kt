@@ -1,6 +1,6 @@
 package com.jiyeon.portfolio.admin.context.link.service
 
-import com.jiyeon.portfolio.admin.context.form.LinkForm
+import com.jiyeon.portfolio.admin.context.link.form.LinkForm
 import com.jiyeon.portfolio.admin.data.TableDTO
 import com.jiyeon.portfolio.domain.entity.Link
 import com.jiyeon.portfolio.domain.repository.LinkRepository

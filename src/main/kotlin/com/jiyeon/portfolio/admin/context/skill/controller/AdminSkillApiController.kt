@@ -1,6 +1,6 @@
 package com.jiyeon.portfolio.admin.context.skill.controller
 
-import com.jiyeon.portfolio.admin.context.form.SkillForm
+import com.jiyeon.portfolio.admin.context.skill.form.SkillForm
 import com.jiyeon.portfolio.admin.context.skill.service.AdminSkillService
 import com.jiyeon.portfolio.admin.data.ApiResponse
 import org.springframework.http.ResponseEntity
@@ -20,7 +20,8 @@ class AdminSkillApiController(private val adminSkillService: AdminSkillService) 
 
     @PutMapping("{id}")
     fun putSkill(@PathVariable id: Long,
-                 @RequestBody form: SkillForm): ResponseEntity<Any> {
+                 @RequestBody form: SkillForm
+    ): ResponseEntity<Any> {
         adminSkillService.update(id, form)
 
         return ApiResponse.successUpdate()

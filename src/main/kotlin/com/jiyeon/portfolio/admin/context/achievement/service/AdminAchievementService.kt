@@ -1,6 +1,6 @@
 package com.jiyeon.portfolio.admin.context.achievement.service
 
-import com.jiyeon.portfolio.admin.context.form.AchievementForm
+import com.jiyeon.portfolio.admin.context.achievement.form.AchievementForm
 import com.jiyeon.portfolio.admin.data.TableDTO
 import com.jiyeon.portfolio.domain.entity.Achievement
 import com.jiyeon.portfolio.domain.repository.AchievementRepository

@@ -1,6 +1,6 @@
 package com.jiyeon.portfolio.admin.context.introduction.controller
 
-import com.jiyeon.portfolio.admin.context.form.IntroductionForm
+import com.jiyeon.portfolio.admin.context.introduction.form.IntroductionForm
 import com.jiyeon.portfolio.admin.context.introduction.service.AdminIntroductionService
 import com.jiyeon.portfolio.admin.data.ApiResponse
 import org.springframework.http.ResponseEntity
@@ -20,7 +20,8 @@ class AdminIntroductionApiController(private val adminIntroductionService: Admin
 
     @PutMapping("/{id}")
     fun putIntroduction(@PathVariable id: Long,
-                        @RequestBody form: IntroductionForm): ResponseEntity<Any> {
+                        @RequestBody form: IntroductionForm
+    ): ResponseEntity<Any> {
         adminIntroductionService.update(id, form)
 
         return ApiResponse.successUpdate()

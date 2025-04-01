@@ -1,6 +1,6 @@
 package com.jiyeon.portfolio.admin.context.introduction.service
 
-import com.jiyeon.portfolio.admin.context.form.IntroductionForm
+import com.jiyeon.portfolio.admin.context.introduction.form.IntroductionForm
 import com.jiyeon.portfolio.admin.data.TableDTO
 import com.jiyeon.portfolio.domain.entity.Introduction
 import com.jiyeon.portfolio.domain.repository.IntroductionRepository

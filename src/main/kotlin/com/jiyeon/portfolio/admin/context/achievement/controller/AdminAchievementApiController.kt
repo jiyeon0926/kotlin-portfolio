@@ -1,7 +1,7 @@
 package com.jiyeon.portfolio.admin.context.achievement.controller
 
+import com.jiyeon.portfolio.admin.context.achievement.form.AchievementForm
 import com.jiyeon.portfolio.admin.context.achievement.service.AdminAchievementService
-import com.jiyeon.portfolio.admin.context.form.AchievementForm
 import com.jiyeon.portfolio.admin.data.ApiResponse
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
@@ -20,7 +20,8 @@ class AdminAchievementApiController(private val adminAchievementService: AdminAc
 
     @PutMapping("/{id}")
     fun putAchievement(@PathVariable id: Long,
-                       @RequestBody form: AchievementForm): ResponseEntity<Any> {
+                       @RequestBody form: AchievementForm
+    ): ResponseEntity<Any> {
         adminAchievementService.update(id, form)
 
         return ApiResponse.successUpdate()

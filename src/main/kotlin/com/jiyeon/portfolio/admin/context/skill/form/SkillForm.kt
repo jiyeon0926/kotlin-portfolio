@@ -1,4 +1,4 @@
-package com.jiyeon.portfolio.admin.context.form
+package com.jiyeon.portfolio.admin.context.skill.form
 
 import com.jiyeon.portfolio.domain.entity.Skill
 import jakarta.validation.constraints.NotBlank

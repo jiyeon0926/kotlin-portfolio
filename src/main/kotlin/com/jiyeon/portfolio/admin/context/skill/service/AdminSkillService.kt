@@ -1,6 +1,6 @@
 package com.jiyeon.portfolio.admin.context.skill.service
 
-import com.jiyeon.portfolio.admin.context.form.SkillForm
+import com.jiyeon.portfolio.admin.context.skill.form.SkillForm
 import com.jiyeon.portfolio.admin.data.TableDTO
 import com.jiyeon.portfolio.admin.exception.AdminBadRequestException
 import com.jiyeon.portfolio.domain.constant.SkillType
