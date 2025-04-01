@@ -11,7 +11,7 @@
                 <div class="col-lg-11 col-xl-9 col-xxl-8">
                     <!-- Project Card 1-->
                     <th:block th:each="project : ${projects}">
-                        <div th:replace="~{/presentation/fragments/fragment-card-project :: card(${project})}"></div>
+                        <div th:replace="presentation/fragments/fragment-card-project :: card(${project})"></div>
                     </th:block>
                 </div>
             </div>
