@@ -63,12 +63,12 @@ create database portfolio;
 use portfolio;
 
  create table account(
- account_id int not null auto_increment
+ id int not null auto_increment
  , login_id varchar(20)
  , password varchar(255)
  , created_date_time datetime
  , updated_date_time datetime
- , primary key(account_id)
+ , primary key(id)
  );
 
  insert into account(login_id, password, created_date_time, updated_date_time)
@@ -85,7 +85,7 @@ create table http_interface(
  , user_agent varchar(255)
  , created_date_time datetime
  , updated_date_time datetime
- , primary key(http_interface_id)
+ , primary key(id)
  );
 
  create table achievement(
@@ -97,7 +97,7 @@ create table http_interface(
  , host varchar(255)
  , is_active bit
  , updated_date_time datetime
- , primary key(achievement_id)
+ , primary key(id)
  );
 
  create table introduction(
@@ -106,7 +106,7 @@ create table http_interface(
  , is_active bit
  , created_date_time datetime
  , updated_date_time datetime
- , primary key(introduction_id)
+ , primary key(id)
  );
 
  create table link(
@@ -116,7 +116,7 @@ create table http_interface(
  , is_active bit
  , created_date_time datetime
  , updated_date_time datetime
- , primary key(link_id)
+ , primary key(id)
  );
 
  create table skill(
@@ -126,7 +126,7 @@ create table http_interface(
  , is_active bit
  , created_date_time datetime
  , updated_date_time datetime
- , primary key(skill_id)
+ , primary key(id)
  );
 
  create table experience(
@@ -140,7 +140,7 @@ create table http_interface(
  , is_active bit
 , created_date_time datetime
  , updated_date_time datetime
- , primary key(experience_id)
+ , primary key(id)
  );
 
  create table experience_detail(
@@ -150,7 +150,7 @@ create table http_interface(
  , is_active bit
  , created_date_time datetime
  , updated_date_time datetime
- , primary key(experience_detail_id)
+ , primary key(id)
  , foreign key(experience_id) references experience(experience_id)
  );
 
@@ -165,7 +165,7 @@ create table http_interface(
  , is_active bit
  , created_date_time datetime
  , updated_date_time datetime
- , primary key(project_id)
+ , primary key(id)
  );
 
  create table project_detail(
@@ -176,7 +176,7 @@ create table http_interface(
  , is_active bit
  , created_date_time datetime
  , updated_date_time datetime
- , primary key(project_detail_id)
+ , primary key(id)
  , foreign key(project_id) references project(project_id)
  );
 
@@ -186,7 +186,7 @@ create table http_interface(
  , skill_id int
  , created_date_time datetime
   , updated_date_time datetime
-  , primary key(project_skill_id)
+  , primary key(id)
   , foreign key(project_id) references project(project_id)
   , foreign key(skill_id) references skill(skill_id)
  );
