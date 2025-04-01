@@ -91,7 +91,7 @@ create table http_interface(
  , created_date_time datetime
  , updated_date_time datetime
  , primary key(id)
- , foreign key(experience_id) references experience(experience_id)
+ , foreign key(experience_id) references experience(id)
  );
 
  create table project(
@@ -117,7 +117,7 @@ create table http_interface(
  , created_date_time datetime
  , updated_date_time datetime
  , primary key(id)
- , foreign key(project_id) references project(project_id)
+ , foreign key(project_id) references project(id)
  );
 
  create table project_skill(
@@ -127,6 +127,6 @@ create table http_interface(
  , created_date_time datetime
   , updated_date_time datetime
   , primary key(id)
-  , foreign key(project_id) references project(project_id)
-  , foreign key(skill_id) references skill(skill_id)
+  , foreign key(project_id) references project(id)
+  , foreign key(skill_id) references skill(id)
  );
